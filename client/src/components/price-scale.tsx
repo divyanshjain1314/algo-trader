@@ -19,7 +19,7 @@ const PriceScale: React.FC<PriceScaleProps> = ({
   }
 
   return (
-    <div className="absolute right-0 top-0 bottom-0 w-14 bg-card border-l border-border px-1 py-1 flex flex-col justify-between text-xs text-muted-foreground">
+    <div className="absolute right-5 top-0 bottom-0 w-14 bg-card border-l border-border px-1 py-1 flex flex-col justify-between text-xs text-muted-foreground">
       {tickValues.map((value, index) => (
         <div key={index}>{value.toFixed(2)}</div>
       ))}

@@ -32,9 +32,9 @@ const ChartPanel: React.FC<ChartPanelProps> = ({
   const maxPrice = Math.max(...data.map(d => d.high));
 
   return (
-    <div className="flex flex-col border-r border-border w-3/4 overflow-hidden">
+    <div className="flex flex-col border-r border-border w-full overflow-auto  h-full border border-[#d3d3d3] py-3">
       {/* Tab Navigation */}
-      <div className="flex bg-secondary border-b border-border">
+      {/* <div className="flex bg-secondary border-b border-border">
         <button 
           className={`tab-button ${activeTab === 'CHART' ? 'tab-button-active' : ''}`}
           onClick={() => setActiveTab('CHART')}
@@ -49,7 +49,7 @@ const ChartPanel: React.FC<ChartPanelProps> = ({
         </button>
         <div className="flex-grow"></div>
         <button className="px-2 text-lg">&times;</button>
-      </div>
+      </div> */}
 
       {/* Chart Controls */}
       <div className="bg-card border-b border-border px-2 py-1 flex items-center">
@@ -97,7 +97,7 @@ const ChartPanel: React.FC<ChartPanelProps> = ({
       </div>
 
       {/* Trade Info */}
-      <div className="bg-card border-b border-border px-3 py-1 flex items-center text-xs space-x-4">
+      <div className="bg-card border-b border-border px-3 py-1 flex items-center text-xs space-x-1">
         <div>COINBASE:{symbol} • 1</div>
         <div className="flex items-center">
           <span className="mr-1 text-muted-foreground">O</span>
@@ -139,7 +139,7 @@ const ChartPanel: React.FC<ChartPanelProps> = ({
         </div>
         
         {/* Chart Controls (Bottom Right) */}
-        <div className="absolute right-16 bottom-6 flex space-x-1">
+        <div className="absolute right-24 bottom-6 flex space-x-1">
           <button className="w-6 h-6 flex items-center justify-center bg-accent rounded-sm hover:bg-muted text-xs">0</button>
           <button className="w-6 h-6 flex items-center justify-center bg-accent rounded-sm hover:bg-muted">
             <RefreshCw className="h-4 w-4" />

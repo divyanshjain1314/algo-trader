@@ -148,7 +148,7 @@ const CandlestickChart: React.FC<CandlestickChartProps> = ({
   }, [data]);
 
   return (
-    <div className="chart-container ml-8 w-full h-full relative">
+    <div className="chart-container ml-8 w-3/4 h-full relative">
       <div ref={chartContainerRef} className="w-full h-full" />
       <div className="absolute left-10 bottom-8 opacity-30">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

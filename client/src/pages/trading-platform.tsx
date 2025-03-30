@@ -162,11 +162,11 @@ const TradingPlatform: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden text-sm">
+    <div className="flex flex-col text-sm">
       <Header user={user} portfolio={portfolio} />
 
-      <div className="flex flex-1 overflow-hidden">
-        <Tabs defaultValue="chart" className="flex flex-col border-r border-border w-3/4 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden px-3">
+        <Tabs defaultValue="chart" className="flex flex-col border-r border-border w-4/6 overflow-hidden">
           <TabsList className="flex bg-secondary border-b border-border rounded-none">
             <TabsTrigger value="chart" className="tab-button data-[state=active]:tab-button-active">CHART</TabsTrigger>
             <TabsTrigger value="orderbook" className="tab-button data-[state=active]:tab-button-active">ORDERBOOK</TabsTrigger>
@@ -174,7 +174,7 @@ const TradingPlatform: React.FC = () => {
             <button className="px-2 text-lg">&times;</button>
           </TabsList>
           
-          <TabsContent value="chart" className="flex-1 flex flex-col overflow-hidden p-0 m-0">
+          <div className="flex-1 flex flex-col overflow-hidden p-0 m-0 min-h-[450px]">
             <ChartPanel 
               symbol={DEFAULT_TICKER} 
               data={chartData} 
@@ -184,18 +184,18 @@ const TradingPlatform: React.FC = () => {
                 { value: '1h', label: '1h' },
               ]}
             />
-          </TabsContent>
+          </div>
           
-          <TabsContent value="orderbook" className="flex-1 flex flex-col overflow-hidden p-0 m-0">
+          <div className="flex-1 flex flex-col p-0 m-0">
             <OrderBookPanel 
               orders={orders || []} 
               onCancelOrder={handleCancelOrder} 
               onCancelAll={handleCancelAll} 
             />
-          </TabsContent>
+          </div>
         </Tabs>
 
-        <div className="flex flex-col w-1/4 bg-background overflow-hidden">
+        <div className="flex flex-col w-2/6 bg-background overflow-hidden">
           <WatchlistPanel 
             watchlist={watchlist || []} 
             onRemoveItem={handleRemoveWatchlistItem}
