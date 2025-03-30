@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222.2 84% 10.9%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 20%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --chart-1: 217 91% 60%;
+    --chart-2: 120 100% 45%;
+    --chart-3: 0 100% 50%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 262 83% 58%;
+
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 20%;
+    --sidebar-ring: 224.3 76.3% 48%;
+
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .panel-header {
+    @apply bg-secondary border-b border-border flex justify-between items-center px-2 py-1 text-xs font-medium;
+  }
+  
+  .table-header {
+    @apply bg-secondary border-b border-border text-xs text-muted-foreground;
+  }
+  
+  .table-cell {
+    @apply px-2 py-1 text-xs whitespace-nowrap;
+  }
+  
+  .positive {
+    @apply text-green-500;
+  }
+  
+  .negative {
+    @apply text-red-500;
+  }
+  
+  .candlestick-up {
+    @apply bg-green-500;
+  }
+  
+  .candlestick-down {
+    @apply bg-red-500;
+  }
+  
+  .tool-button {
+    @apply w-6 h-6 flex items-center justify-center rounded hover:bg-accent;
+  }
+  
+  .tab-button {
+    @apply px-3 py-1 text-xs border-r border-border;
+  }
+  
+  .tab-button-active {
+    @apply bg-card;
+  }
+  
+  .resizable-panel {
+    resize: both;
+    overflow: auto;
+  }
+}
