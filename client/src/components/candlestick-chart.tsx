@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { createChart, ColorType, IChartApi, ISeriesApi } from 'lightweight-charts';
 import { OHLC } from '@/lib/types';
+import { useTheme } from '@/lib/theme-context';
 
 interface CandlestickChartProps {
   data: OHLC[];
@@ -16,6 +17,9 @@ const CandlestickChart: React.FC<CandlestickChartProps> = ({
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null);
+  const { theme } = useTheme();
+  
+  const isDarkMode = theme === 'dark';
 
   useEffect(() => {
     if (chartContainerRef.current) {
@@ -37,37 +41,40 @@ const CandlestickChart: React.FC<CandlestickChartProps> = ({
         seriesRef.current = null;
       }
 
-      // Create new chart
+      // Create new chart with theme-dependent styles
       const chart = createChart(chartContainerRef.current, {
         width: width - 75, // Account for price scale and tools
         height: height - 20, // Account for time scale
         layout: {
-          background: { type: ColorType.Solid as const, color: 'rgba(30, 30, 30, 1)' },
-          textColor: '#9E9E9E',
+          background: { 
+            type: ColorType.Solid as const, 
+            color: isDarkMode ? 'rgba(30, 30, 30, 1)' : 'rgba(255, 255, 255, 1)' 
+          },
+          textColor: isDarkMode ? '#9E9E9E' : '#333333',
         },
         grid: {
-          vertLines: { color: '#333' },
-          horzLines: { color: '#333' },
+          vertLines: { color: isDarkMode ? '#333' : '#e0e0e0' },
+          horzLines: { color: isDarkMode ? '#333' : '#e0e0e0' },
         },
         crosshair: {
           mode: 0,
           vertLine: {
             width: 1,
-            color: 'rgba(255, 255, 255, 0.3)',
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
             style: 1,
           },
           horzLine: {
             width: 1,
-            color: 'rgba(255, 255, 255, 0.3)',
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
             style: 1,
           },
         },
         timeScale: {
-          borderColor: '#333',
+          borderColor: isDarkMode ? '#333' : '#e0e0e0',
           timeVisible: true,
         },
         rightPriceScale: {
-          borderColor: '#333',
+          borderColor: isDarkMode ? '#333' : '#e0e0e0',
         },
       });
 
@@ -122,7 +129,7 @@ const CandlestickChart: React.FC<CandlestickChartProps> = ({
         }
       };
     }
-  }, [data, width, height]);
+  }, [data, width, height, isDarkMode]);
 
   // Update chart data if it changes
   useEffect(() => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { User, Portfolio } from '@/lib/types';
+import ThemeSwitch from './theme-switch';
 
 interface HeaderProps {
   user: User;
@@ -10,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ user, portfolio }) => {
   return (
     <header className="bg-secondary border-b border-border py-2 px-4 flex items-center justify-between">
       <div className="flex items-center">
-        <h1 className="text-xl font-bold text-white">AlgoTrader</h1>
+        <h1 className="text-xl font-bold text-foreground">AlgoTrader</h1>
         <div className="ml-6 flex items-center space-x-2">
           <div>
             <div className="text-xs text-muted-foreground">Name</div>
@@ -43,6 +44,9 @@ const Header: React.FC<HeaderProps> = ({ user, portfolio }) => {
         <div>
           <div className="text-xs text-muted-foreground">PORTFOLIO</div>
           <div className="text-sm text-foreground">{portfolio.type}</div>
+        </div>
+        <div className="ml-4">
+          <ThemeSwitch />
         </div>
       </div>
     </header>
