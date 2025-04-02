@@ -11,7 +11,7 @@ interface CandlestickChartProps {
 
 const CandlestickChart: React.FC<CandlestickChartProps> = ({ 
   data, 
-  width = 800, 
+  width = 780, 
   height = 320 
 }) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);

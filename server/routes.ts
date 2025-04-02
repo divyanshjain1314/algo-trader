@@ -177,7 +177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     
     if (data.length === 0) {
       // For demo, if no data is found, return mock data
-      const mockData = [
+      const mockData2 = [
         { timestamp: 1630000000000, open: 28632.44, high: 28638.87, low: 28628.69, close: 28634.36, volume: 100 },
         { timestamp: 1630000060000, open: 28634.36, high: 28640.12, low: 28630.25, close: 28636.54, volume: 85 },
         { timestamp: 1630000120000, open: 28636.54, high: 28642.33, low: 28632.18, close: 28638.72, volume: 92 },
@@ -189,6 +189,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
         { timestamp: 1630000480000, open: 28649.65, high: 28655.68, low: 28643.79, close: 28651.83, volume: 115 },
         { timestamp: 1630000540000, open: 28651.83, high: 28657.91, low: 28645.73, close: 28654.02, volume: 98 },
       ];
+      const generateMockData = (count = 100) => {
+        const data = [];
+        let timestamp = 1630000000000; // Starting timestamp
+        let open = 28632.44;
+      
+        for (let i = 0; i < count; i++) {
+          const high = open + (Math.random() * 10);
+          const low = open - (Math.random() * 10);
+          const close = low + (Math.random() * (high - low));
+          const volume = Math.floor(Math.random() * 200) + 50; // Random volume
+      
+          data.push({
+            timestamp,
+            open: parseFloat(open.toFixed(2)),
+            high: parseFloat(high.toFixed(2)),
+            low: parseFloat(low.toFixed(2)),
+            close: parseFloat(close.toFixed(2)),
+            volume
+          });
+      
+          // Move to the next timestamp (+ 1 minute)
+          // timestamp += 60000;
+          open = close; // Next open is previous close
+        }
+      
+        return data;
+      };
+      
+      const mockData = generateMockData(1000000);
       
       return res.json(mockData);
     }

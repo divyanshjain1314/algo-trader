@@ -110,7 +110,7 @@
 
 @layer components {
   .panel-header {
-    @apply bg-secondary border-b border-border flex justify-between items-center px-2 py-1 text-xs font-medium;
+    @apply bg-secondary border-b border-border flex justify-between items-center px-1 py-1 text-xs font-medium;
   }
   
   .table-header {
@@ -149,6 +149,12 @@
     @apply bg-card;
   }
   
+  * {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
   .resizable-panel {
     resize: both;
     overflow: auto;
